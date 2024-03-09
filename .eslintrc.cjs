@@ -11,7 +11,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'react/prop-types': 'off',
-    indent: ['error', 4, { SwitchCase: 1 }],
+    indent: ['error', 2, { SwitchCase: 1 }],
     'no-unused-vars': "off",
     'space-before-function-paren': ['error', {
       anonymous: 'always',

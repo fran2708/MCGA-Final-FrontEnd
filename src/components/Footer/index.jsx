@@ -1,6 +1,6 @@
 import React from 'react'
 
-function index() {
+function index () {
   return (
     <div>Footer</div>
   )
