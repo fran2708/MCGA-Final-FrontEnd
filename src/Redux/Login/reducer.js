@@ -9,11 +9,9 @@ import {
   const initialState = {
     isFetching: false,
     error: '',
-    user: 
-    {
-        name: '',
+    user: {
         email: '',
-        token: ''
+        role: ''
     },
     token: ''
   }

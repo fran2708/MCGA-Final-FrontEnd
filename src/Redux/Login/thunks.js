@@ -38,7 +38,7 @@ export const login = (creds) => {
     }
 }
 
-export const logout = () => {
+export const logOut = () => {
     return (dispatch) => {
         dispatch(logout())
     }
