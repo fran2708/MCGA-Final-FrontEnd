@@ -17,43 +17,16 @@ import {
 } from './actions'
 
 // GET PRODUCTS LIST
-// export const getProducts = () => {
-//     return (dispatch) => {
-//         dispatch(getProductsLoading())
-//         return fetch(`${import.meta.env.VITE_REACT_API_URL}/products`, {
-//             method: 'GET',
-//             headers: {
-//                 'Access-Control-Allow-Origin': '*'
-//             },
-//             mode: 'cors'
-//         })
-//             .then((response) => {
-//                 if (response.status !== 200) {
-//                     return response.json().then(({ message }) => {
-//                         throw new Error(message)
-//                     })
-//                 }
-//                 return response.json()
-//             })
-//             .then((response) => {
-//                 dispatch(getProductsSuccess(response.data))
-//             })
-//             .catch((error) => {
-//                 dispatch(getProductsError(error.toString()))
-//             })
-//     }
-// }
-
 export const getProducts = () => {
     return async (dispatch, getState) => {
         dispatch(getProductsLoading())
         try {
-            const response = await fetch(`${import.meta.env.VITE_REACT_API_URL}/api/products`, {
-                method: 'GET'
-                // headers: {
-                // 'Access-Control-Allow-Origin': '*'
-                // },
-                // mode: 'cors'
+            const response = await fetch(`${import.meta.env.VITE_REACT_API_URL}/products`, {
+                method: 'GET',
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                },
+                mode: 'cors'
             })
 
             const json = await response.json()
@@ -91,93 +64,86 @@ export const getProductById = (id) => {
 
 // ADD PRODUCT
 export const addProduct = (values) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         dispatch(addProductLoading())
         const token = getState().login.token
         const options = {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
                 authorization: `Bearer ${token}`
             },
+            mode: 'cors',
             body: JSON.stringify(values)
         }
-        return fetch(`${process.env.VITE_REACT_API_URL}/products`, options)
-            .then((response) => {
-                if (response.status !== 201) {
-                    return response.json().then(({ message }) => {
-                        throw new Error(message)
-                    })
-                }
-                return response.json()
-            })
-            .then((response) => {
-                dispatch(addProductSuccess(response.data))
-                return response.data
-            })
-            .catch((error) => {
-                dispatch(addProductError(error.toString()))
-            })
+        try {
+            const response = await fetch(`${import.meta.env.VITE_REACT_API_URL}/products`, options)
+
+            const json = await response.json()
+
+            response.status !== 201
+                ? dispatch(addProductError(json.toString()))
+                : dispatch(addProductSuccess(json.data))
+        } catch (error) {
+            dispatch(addProductError(error.toString()))
+        }
     }
 }
 
 // UPDATE PRODUCT
 export const updateProduct = (id, values) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         dispatch(updateProductLoading())
         const token = getState().login.token
         const options = {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
                 authorization: `Bearer ${token}`
             },
+            mode: 'cors',
             body: JSON.stringify(values)
         }
-        return fetch(`${process.env.VITE_REACT_API_URL}/products/${id}`, options)
-            .then((response) => {
-                if (response.status !== 200) {
-                    return response.json().then(({ message }) => {
-                        throw new Error(message)
-                    })
-                }
-                return response.json()
-            })
-            .then((response) => {
-                dispatch(updateProductSuccess(response.data))
-                return response.data
-            })
-            .catch((error) => {
-                dispatch(updateProductError(error.toString()))
-            })
+        try {
+            const response = await fetch(`${import.meta.env.VITE_REACT_API_URL}/products/${id}`, options)
+
+            const json = await response.json()
+
+            response.status !== 200
+                ? dispatch(updateProductError(json.toString()))
+                : dispatch(updateProductSuccess(json.data))
+        } catch (error) {
+            dispatch(updateProductError(error.toString()))
+        }
     }
 }
 
 // DELETE PRODUCT
 export const deleteProduct = (id) => {
-    return (dispatch, getState) => {
+    return async (dispatch, getState) => {
         dispatch(deleteProductLoading())
         const token = getState().login.token
-        return fetch(`${process.env.VITE_REACT_API_URL}/products/${id}`, {
+        const options = {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
                 authorization: `Bearer ${token}`
-            }
-        })
-            .then((response) => {
-                if (response.status !== 204) {
-                    return response.json().then(({ message }) => {
-                        throw new Error(message)
-                    })
-                }
-            })
-            .then((response) => {
-                dispatch(deleteProductSuccess(response.data))
-                return response.data
-            })
-            .catch((error) => {
-                dispatch(deleteProductError(error.toString()))
-            })
+            },
+            mode: 'cors'
+        }
+        try {
+            const response = await fetch(`${import.meta.env.VITE_REACT_API_URL}/products/${id}`, options)
+
+            const json = await response.json()
+
+            response.status !== 204 && response.status !== 200
+                ? dispatch(deleteProductError(json.toString()))
+                : dispatch(deleteProductSuccess(json.data))
+        } catch (error) {
+            dispatch(deleteProductError(error.toString()))
+        }
     }
 }

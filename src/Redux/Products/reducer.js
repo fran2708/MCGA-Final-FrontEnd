@@ -52,7 +52,7 @@ const productsReducer = (state = INITIAL_STATE_VALUE, action) => {
             return {
                 ...state,
                 isLoading: false,
-                products: [...state.products, action.payload],
+                products: action.payload,
                 error: false,
                 message: 'Products loaded successfully'
             }

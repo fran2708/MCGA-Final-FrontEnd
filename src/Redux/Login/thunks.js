@@ -12,29 +12,26 @@ export const login = (creds) => {
         const options = {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
             },
+            mode: 'cors',
             body: JSON.stringify(creds)
         }
-        return await fetch(`${process.env.VITE_REACT_API_URL}/auth/login`, options)
-            .then(async (response) => {
-                if (response.status !== 200) {
-                    return response.json()
-                        .then(( {message }) => {
-                            throw new Error(message)
-                        })
-                }
-                return response.json()
-            })
-            .then((response) => {
-                dispatch(getLoginSuccess(response.data))
-                dispatch(setToken(response.data.token))
-                return response.data
-            })
-            .catch((error) => {
-                dispatch(getLoginError(error.toString()))
-                throw error
-            })
+        try {
+            const response = await fetch(`${process.env.VITE_REACT_API_URL}/login`, options)
+
+            const json = response.json()
+
+            if (response.status !== 200) {
+                dispatch(getLoginError(json.toString()))
+            } else {
+                dispatch(getLoginSuccess(json.data))
+                dispatch(setToken(json.data.token))
+            }
+        } catch (error) {
+            dispatch(getLoginError(error.toString()))
+        }
     }
 }
 

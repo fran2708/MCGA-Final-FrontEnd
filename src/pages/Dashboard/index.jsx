@@ -18,6 +18,8 @@ function index () {
         }
     }, [dispatch, products])
 
+    console.log(products)
+
     const logOut = () => {
         user.email = ''
         user.id = ''
@@ -36,6 +38,7 @@ function index () {
                         <th className={styles.thead}>Name</th>
                         <th className={styles.thead}>Price</th>
                         <th className={styles.thead}>Stock</th>
+                        <th className={styles.thead}>Description</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -45,6 +48,7 @@ function index () {
                                 <td className={styles.tbody}>{product.name}</td>
                                 <td className={styles.tbody}>{product.price}</td>
                                 <td className={styles.tbody}>{product.stock}</td>
+                                <td className={styles.tbody}>{product.description}</td>
                             </tr>
                         )
                     })}
