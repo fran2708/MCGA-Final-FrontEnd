@@ -17,7 +17,7 @@ import {
 } from './types'
 
 const INITIAL_STATE_VALUE = {
-    procucts: [],
+    products: [],
     idLoading: false,
     error: false,
     message: ''

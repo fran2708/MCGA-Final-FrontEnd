@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../Redux/Login/thunks'
 import { useNavigate } from 'react-router-dom'
 import { PrivateRoutes } from '../../models/routes'
+import styles from './login.module.css'
 
 function index () {
     const navigate = useNavigate()
@@ -14,9 +15,15 @@ function index () {
     }
 
     return (
-        <div>
+        <div className={styles.container}>
             <h2>LOGIN</h2>
-            <button onClick={loginFunc}>LOGIN</button>
+            <form action="submit">
+                <label htmlFor="emailInput">Enter your email</label>
+                <input type="text" id="emailInput" />
+                <label htmlFor="passwordInput">Enter your password</label>
+                <input type="password" id="passwordInput" />
+                <button onClick={loginFunc}>LOGIN</button>
+            </form>
         </div>
     )
 }
