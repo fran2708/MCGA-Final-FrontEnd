@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { PublicRoutes } from '../../models/routes'
 import { useEffect } from 'react'
-import { getProducts } from '../../Redux/Products/thunks'
+import { getProducts, deleteProduct } from '../../Redux/Products/thunks'
 import styles from './dashboard.module.css'
 
 function index () {
@@ -18,16 +18,21 @@ function index () {
         }
     }, [dispatch, products])
 
-    console.log(products)
-
     const logOut = () => {
         user.email = ''
         user.id = ''
         navigate(`/${PublicRoutes.LOGIN}`, { replace: true })
     }
 
-    if (error) return <p>Error</p>
+    const handleDeleteProduct = id => {
+        dispatch(deleteProduct(id))
+    }
 
+    if (error) {
+        return (
+            <p>Error</p>
+        )
+    }
     if (isLoading) return <p>Loading...</p>
     return (
         <div>
@@ -49,6 +54,9 @@ function index () {
                                 <td className={styles.tbody}>{product.price}</td>
                                 <td className={styles.tbody}>{product.stock}</td>
                                 <td className={styles.tbody}>{product.description}</td>
+                                <td>
+                                    <button value="Delete" onClick={() => handleDeleteProduct(product._id)}>Delete</button>
+                                </td>
                             </tr>
                         )
                     })}
