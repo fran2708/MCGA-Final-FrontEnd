@@ -40,8 +40,11 @@ export const logout = () => {
     return {
         type: LOGOUT,
         payload: {
-            user: null,
-            token: null
+            token: '',
+            user: {
+                email: '',
+                role: ''
+            }
         }
     }
 }

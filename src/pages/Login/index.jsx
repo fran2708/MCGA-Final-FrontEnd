@@ -1,10 +1,14 @@
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { login } from '../../Redux/Login/thunks'
 import { useNavigate } from 'react-router-dom'
+
+import { login } from '../../Redux/Login/thunks'
 import { PrivateRoutes } from '../../models/routes'
+
 import styles from './login.module.css'
 
 function index () {
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const user = useSelector((store) => store.login.user)
 

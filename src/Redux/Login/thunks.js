@@ -19,7 +19,7 @@ export const login = (creds) => {
             body: JSON.stringify(creds)
         }
         try {
-            const response = await fetch(`${process.env.VITE_REACT_API_URL}/login`, options)
+            const response = await fetch(`${import.meta.VITE_REACT_API_URL}/login`, options)
 
             const json = response.json()
 
