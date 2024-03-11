@@ -37,8 +37,13 @@ const Modal = ({ isOpen, handleClose, action, product }) => {
     }
 
     const handleSubmit = () => {
-        dispatch(updateProduct(product._id, newProductData))
-        handleClose()
+        if (action === actionTypes.EDIT) {
+            dispatch(updateProduct(product._id, newProductData))
+            handleClose()
+        } else {
+            dispatch(addProduct())
+            handleClose()
+        }
     }
 
     return (

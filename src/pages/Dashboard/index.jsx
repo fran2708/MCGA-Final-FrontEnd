@@ -79,7 +79,10 @@ function index () {
                     })}
                 </tbody>
             </table>
-            <h3>Add a product</h3>
+            <div>
+                <h3>Add a product</h3>
+                <button onClick={() => handleButtonClick(actionTypes.CREATE)}>Add</button>
+            </div>
             <Modal
                 isOpen={isModalOpen}
                 handleClose={handleToggleModal}

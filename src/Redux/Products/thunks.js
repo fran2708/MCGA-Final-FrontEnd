@@ -43,7 +43,7 @@ export const getProducts = () => {
 export const getProductById = (id) => {
     return (dispatch) => {
         dispatch(getProductByIdLoading())
-        return fetch(`${process.env.VITE_REACT_API_URL}/products?_id=${id}`)
+        return fetch(`${import.meta.env.VITE_REACT_API_URL}/products?_id=${id}`)
             .then((response) => {
                 if (response.status !== 200) {
                     return response.json().then(({ message }) => {
