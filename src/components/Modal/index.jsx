@@ -4,6 +4,9 @@ import { useDispatch } from 'react-redux'
 import { addProduct, updateProduct } from '../../Redux/Products/thunks'
 import { actionTypes } from '../../models/actionTypes'
 
+import EditModal from './EditModal'
+import AddModal from './AddModal'
+
 import styles from './modal.module.css'
 
 const Modal = ({ isOpen, handleClose, action, product }) => {
