@@ -17,6 +17,7 @@ function index ({ newProductData, product, setNewProductData }) {
                         className={styles.editInput}
                         type='text'
                         id='name'
+                        name='name'
                         value={newProductData.name}
                         placeholder={product.name}
                         onChange={handleChange}
@@ -28,6 +29,7 @@ function index ({ newProductData, product, setNewProductData }) {
                         className={styles.editInput}
                         type='text'
                         id='price'
+                        name='price'
                         value={newProductData.price}
                         placeholder={product.price}
                         onChange={handleChange}
@@ -39,6 +41,7 @@ function index ({ newProductData, product, setNewProductData }) {
                         className={styles.editInput}
                         type='text'
                         id='stock'
+                        name='stock'
                         value={newProductData.stock}
                         placeholder={product.stock}
                         onChange={handleChange}
@@ -50,6 +53,7 @@ function index ({ newProductData, product, setNewProductData }) {
                         className={styles.editInput}
                         type='text'
                         id='description'
+                        name='description'
                         value={newProductData.description}
                         placeholder={product.description}
                         onChange={handleChange}

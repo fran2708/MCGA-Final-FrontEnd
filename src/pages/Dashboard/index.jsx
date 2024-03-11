@@ -38,6 +38,7 @@ function index () {
             handleToggleModal()
         } else {
             setModalAction(actionTypes.CREATE)
+            handleToggleModal()
         }
     }
 
