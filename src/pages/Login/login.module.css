@@ -1,4 +1,4 @@
-.container{
+.logIncontainer{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -14,4 +14,12 @@ form{
     min-width: 100%;
     min-height: 40vh;
     justify-content: space-between;
+}
+
+.hideErrorParagraph{
+    display: none;}
+    
+.showErrorParagraph{
+    display:block;
+    color: var(--cancel-button-red)
 }

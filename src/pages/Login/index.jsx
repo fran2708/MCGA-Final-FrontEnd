@@ -10,23 +10,45 @@ import styles from './login.module.css'
 function index () {
     const dispatch = useDispatch()
     const navigate = useNavigate()
-    const user = useSelector((store) => store.login.user)
+    const error = useSelector((state) => state.login.error)
+    const [credentials, setCredentials] = useState({
+        email: '',
+        password: ''
+    })
+
+    const handleChange = (event) => {
+        setCredentials((prevData) => ({
+            ...prevData,
+            [event.target.name]: event.target.value
+        }))
+    }
 
     const loginFunc = () => {
-        user.email = 'test@test.com'
-        user.id = 'test'
+        dispatch(login(credentials))
         navigate(`/${PrivateRoutes.DASHBOARD}`, { replace: true })
     }
 
     return (
-        <div className={styles.container}>
-            <h2>LOGIN</h2>
-            <form action="submit">
+        <div className={styles.logInContainer}>
+            <h2 className={styles.heading}>LOGIN</h2>
+            <form className={styles.form}>
                 <label htmlFor="emailInput">Enter your email</label>
-                <input type="text" id="emailInput" />
+                <input
+                    type="text" id="emailInput"
+                    name="email"
+                    className={styles.input}
+                    onChange={handleChange}
+                />
                 <label htmlFor="passwordInput">Enter your password</label>
-                <input type="password" id="passwordInput" />
-                <button onClick={loginFunc}>LOGIN</button>
+                <input
+                    type="password"
+                    id="passwordInput"
+                    name="password"
+                    className={styles.input}
+                    onChange={handleChange}
+                />
+                <p className={error ? styles.showErrorParagraph : styles.hideErrorParagraph}>Please check your credentials</p>
+                <button className={styles.button} onClick={loginFunc}>Login</button>
             </form>
         </div>
     )

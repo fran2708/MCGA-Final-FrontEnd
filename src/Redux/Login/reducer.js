@@ -9,11 +9,11 @@ import {
 const initialState = {
     isFetching: false,
     error: false,
+    token: '',
     user: {
         email: '',
         role: ''
-    },
-    token: ''
+    }
 }
 
 const loginReducer = (state = initialState, action) => {
