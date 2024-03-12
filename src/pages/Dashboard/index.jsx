@@ -14,6 +14,7 @@ import styles from './dashboard.module.css'
 function index () {
     const [modalAction, setModalAction] = useState('')
     const [productToEdit, setProductToEdit] = useState({})
+    const [selectedRow, setSelectedRow] = useState(null)
     const [isModalOpen, handleToggleModal] = useModal()
     const { products, error, isLoading } = useSelector((store) => store.products)
     const userState = useSelector((store) => store.login.user)
@@ -42,7 +43,7 @@ function index () {
         }
     }
 
-    const handleDeleteProduct = id => {
+    const handleDeleteProduct = (id) => {
         dispatch(deleteProduct(id))
     }
 
@@ -69,7 +70,7 @@ function index () {
                     </tr>
                 </thead>
                 <tbody>
-                    {products.map((product) => {
+                    {products.map((product, index) => {
                         return (
                             <tr key={product._id}>
                                 <td className={styles.tbody}>{product.name}</td>

@@ -29,11 +29,30 @@ const Modal = ({ isOpen, handleClose, action, product }) => {
         })
         setIsConfirming(false)
     }
-    const handleChange = (event) => {
-        setNewProductData((prevData) => ({
-            ...prevData,
-            [event.target.name]: event.target.value
-        }))
+
+    const handleEditSubmit = (e) => {
+        e.preventDefault()
+
+        const fieldsToUpdate = ['name', 'price', 'stock', 'description']
+        const updatedProductData = { ...newProductData }
+
+        fieldsToUpdate.forEach((field) => {
+            if (!updatedProductData[field]) {
+                updatedProductData[field] = product[field]
+            }
+        })
+        setNewProductData(updatedProductData)
+        dispatch(updateProduct(product._id, updatedProductData))
+        handleClose()
+        setIsConfirming(false)
+    }
+
+    const handleAddSubmit = (e) => {
+        e.preventDefault()
+
+        dispatch(addProduct(newProductData))
+        handleClose()
+        setIsConfirming(false)
     }
 
     const handleSubmit = () => {
@@ -74,7 +93,7 @@ const Modal = ({ isOpen, handleClose, action, product }) => {
                             <button
                                 className={styles.confirmButton}
                                 type="submit"
-                                onClick={handleChange}>
+                                onClick={action === actionTypes.EDIT ? handleEditSubmit : handleAddSubmit}>
                             Confirm
                             </button>
                             <button
