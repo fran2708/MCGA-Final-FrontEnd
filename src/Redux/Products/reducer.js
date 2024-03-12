@@ -13,7 +13,8 @@ import {
     UPDATE_PRODUCT_LOADING,
     DELETE_PRODUCT_SUCCESS,
     DELETE_PRODUCT_ERROR,
-    DELETE_PRODUCT_LOADING
+    DELETE_PRODUCT_LOADING,
+    CLEAR_ERROR
 } from './types'
 
 const INITIAL_STATE_VALUE = {
@@ -71,14 +72,25 @@ const productsReducer = (state = INITIAL_STATE_VALUE, action) => {
                 message: 'Loading products...'
             }
         // UPDATE PRODUCT
-        case UPDATE_PRODUCT_SUCCESS:
+        case UPDATE_PRODUCT_SUCCESS:{
+            // find the index of the edited product in the products array
+            const editedProductIndex = state.products.findIndex(
+                (product) => product._id === action.payload._id
+            )
+
+            // create new array with the updated product data
+            const updatedProducts = state.products.map((product, index) =>
+                index === editedProductIndex ? action.payload : product
+            )
+
             return {
                 ...state,
                 isLoading: false,
                 error: false,
-                products: action.payload,
+                products: updatedProducts,
                 message: 'Updated product successfully'
             }
+        }
         case UPDATE_PRODUCT_ERROR:
             return {
                 ...state,
@@ -114,6 +126,11 @@ const productsReducer = (state = INITIAL_STATE_VALUE, action) => {
                 ...state,
                 isLoading: true,
                 message: 'Deleting product...'
+            }
+        case CLEAR_ERROR:
+            return {
+                ...state,
+                error: false
             }
         default: return state
     }

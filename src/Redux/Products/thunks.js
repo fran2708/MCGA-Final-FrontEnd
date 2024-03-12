@@ -13,7 +13,8 @@ import {
     getProductByIdLoading,
     deleteProductSuccess,
     deleteProductError,
-    deleteProductLoading
+    deleteProductLoading,
+    clearErrorAction
 } from './actions'
 
 // GET PRODUCTS LIST
@@ -145,5 +146,11 @@ export const deleteProduct = (id) => {
         } catch (error) {
             dispatch(deleteProductError(error.toString()))
         }
+    }
+}
+
+export const clearError = () => {
+    return (dispatch) => {
+        dispatch(clearErrorAction())
     }
 }

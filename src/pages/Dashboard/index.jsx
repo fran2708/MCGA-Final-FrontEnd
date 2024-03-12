@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { PublicRoutes } from '../../models/routes'
 import { useEffect, useState } from 'react'
 
-import { getProducts, deleteProduct } from '../../Redux/Products/thunks'
+import { getProducts, deleteProduct, clearError } from '../../Redux/Products/thunks'
 import { logOut } from '../../Redux/Login/thunks'
 import Modal from '../../components/Modal'
 import useModal from '../../helpers/hooks/useModal'
@@ -47,12 +47,17 @@ function index () {
         dispatch(deleteProduct(id))
     }
 
+    const handleClearError = () => {
+        dispatch(clearError())
+    }
+
     if (error) {
         return (
-            <>
+            <div className={styles.errorContainer}>
                 <p>Error</p>
+                <button onClick={handleClearError}>Clear Error</button>
                 <button onClick={dashboardLogOut}>LOGOUT</button>
-            </>
+            </div>
         )
     }
     if (isLoading) return <p>Loading...</p>

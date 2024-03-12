@@ -13,7 +13,8 @@ import {
     UPDATE_PRODUCT_LOADING,
     DELETE_PRODUCT_SUCCESS,
     DELETE_PRODUCT_ERROR,
-    DELETE_PRODUCT_LOADING
+    DELETE_PRODUCT_LOADING,
+    CLEAR_ERROR
 } from './types'
 
 // ADD PRODUCT
@@ -118,5 +119,11 @@ export const deleteProductError = (error) => {
 export const deleteProductLoading = () => {
     return {
         type: DELETE_PRODUCT_LOADING
+    }
+}
+
+export const clearErrorAction = () => {
+    return {
+        type: CLEAR_ERROR
     }
 }
