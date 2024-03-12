@@ -55,16 +55,6 @@ const Modal = ({ isOpen, handleClose, action, product }) => {
         setIsConfirming(false)
     }
 
-    const handleSubmit = () => {
-        if (action === actionTypes.EDIT) {
-            dispatch(updateProduct(product._id, newProductData))
-            handleClose()
-        } else {
-            dispatch(addProduct())
-            handleClose()
-        }
-    }
-
     return (
         <div className={isOpen ? styles.modalOpen : styles.modal}>
             <div className={styles.modalContent}>

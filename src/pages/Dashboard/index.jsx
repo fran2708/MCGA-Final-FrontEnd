@@ -83,8 +83,16 @@ function index () {
                                 <td className={styles.tbody}>{product.stock}</td>
                                 <td className={styles.tbody}>{product.description}</td>
                                 <td>
-                                    <button value="Update" onClick={() => handleButtonClick(actionTypes.EDIT, product)}>Update</button>
-                                    <button value="Delete" onClick={() => handleDeleteProduct(product._id)}>Delete</button>
+                                    {selectedRow === index
+                                        ? <>
+                                            <button className={styles.confirmDeleteButton} onClick={() => handleDeleteProduct(product._id)}>Confirm</button>
+                                            <button className={styles.confirmCancelButton} onClick={() => setSelectedRow(null)}>Cancel</button>
+                                        </>
+                                        : <>
+                                            <button value="Update" onClick={() => handleButtonClick(actionTypes.EDIT, product)}>Update</button>
+                                            <button value="Delete" onClick={() => setSelectedRow(index)}>Delete</button>
+                                        </>
+                                    }
                                 </td>
                             </tr>
                         )
