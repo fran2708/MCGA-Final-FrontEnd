@@ -111,7 +111,7 @@ const productsReducer = (state = INITIAL_STATE_VALUE, action) => {
                 ...state,
                 isLoading: false,
                 error: false,
-                products: [...state.products.filter((PRODUCT) => PRODUCT._id !== action.payload)],
+                products: [...state.products.filter((product) => product._id !== action.payload)],
                 message: 'Product deleted successfully'
             }
         case DELETE_PRODUCT_ERROR:

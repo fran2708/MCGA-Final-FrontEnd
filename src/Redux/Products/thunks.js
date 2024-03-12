@@ -142,7 +142,7 @@ export const deleteProduct = (id) => {
 
             response.status !== 204 && response.status !== 200
                 ? dispatch(deleteProductError(json.toString()))
-                : dispatch(deleteProductSuccess(json.data))
+                : dispatch(deleteProductSuccess(json.id))
         } catch (error) {
             dispatch(deleteProductError(error.toString()))
         }

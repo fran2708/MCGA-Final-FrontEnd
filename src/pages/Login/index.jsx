@@ -16,7 +16,6 @@ function index () {
         password: ''
     })
     const userState = useSelector((store) => store.login.user)
-    console.log(userState)
 
     const handleChange = (event) => {
         setCredentials((prevData) => ({
