@@ -1,12 +1,14 @@
+import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { PublicRoutes } from '../../models/routes'
-import { useEffect, useState } from 'react'
 
 import { getProducts, deleteProduct, clearError } from '../../Redux/Products/thunks'
 import { logOut } from '../../Redux/Login/thunks'
+
 import Modal from '../../components/Modal'
 import useModal from '../../helpers/hooks/useModal'
+
+import { PublicRoutes } from '../../models/routes'
 import { actionTypes } from '../../models/actionTypes'
 
 import styles from './dashboard.module.css'
@@ -60,48 +62,53 @@ function index () {
             </div>
         )
     }
+
     if (isLoading) return <p>Loading...</p>
+
     return (
         <div>
-            <button onClick={dashboardLogOut}>LOGOUT</button>
+            <button className={styles.dashboardButtons} onClick={dashboardLogOut}>LOGOUT</button>
             <h2>DASHBOARD</h2>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th className={styles.thead}>Name</th>
-                        <th className={styles.thead}>Price</th>
-                        <th className={styles.thead}>Stock</th>
-                        <th className={styles.thead}>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((product, index) => {
-                        return (
-                            <tr key={product._id}>
-                                <td className={styles.tbody}>{product.name}</td>
-                                <td className={styles.tbody}>{product.price}</td>
-                                <td className={styles.tbody}>{product.stock}</td>
-                                <td className={styles.tbody}>{product.description}</td>
-                                <td>
-                                    {selectedRow === index
-                                        ? <>
-                                            <button className={styles.confirmDeleteButton} onClick={() => handleDeleteProduct(product._id)}>Confirm</button>
-                                            <button className={styles.confirmCancelButton} onClick={() => setSelectedRow(null)}>Cancel</button>
-                                        </>
-                                        : <>
-                                            <button value="Update" onClick={() => handleButtonClick(actionTypes.EDIT, product)}>Update</button>
-                                            <button value="Delete" onClick={() => setSelectedRow(index)}>Delete</button>
-                                        </>
-                                    }
-                                </td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <div className={styles.tableContainer}>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Description</th>
+                            <th>Buttons</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {products.map((product, index) => {
+                            return (
+                                <tr key={product._id}>
+                                    <td className={styles.tbody}>{product.name}</td>
+                                    <td className={styles.tbody}>{product.price}</td>
+                                    <td className={styles.tbody}>{product.stock}</td>
+                                    <td className={styles.tbody}>{product.description}</td>
+                                    <td>
+                                        {selectedRow === index
+                                            ? <>
+                                                <button className={styles.confirmDeleteButton} onClick={() => handleDeleteProduct(product._id)}>Confirm</button>
+                                                <button className={styles.confirmCancelButton} onClick={() => setSelectedRow(null)}>Cancel</button>
+                                            </>
+                                            : <>
+                                                <button className={styles.dashboardButtons} value="Update" onClick={() => handleButtonClick(actionTypes.EDIT, product)}>Update</button>
+                                                <button className={styles.dashboardButtons} value="Delete" onClick={() => setSelectedRow(index)}>Delete</button>
+                                            </>
+                                        }
+                                    </td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
             <div>
                 <h3>Add a product</h3>
-                <button onClick={() => handleButtonClick(actionTypes.CREATE)}>Add</button>
+                <button className={styles.dashboardButtons} onClick={() => handleButtonClick(actionTypes.CREATE)}>Add</button>
             </div>
             <Modal
                 isOpen={isModalOpen}

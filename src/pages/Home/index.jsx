@@ -27,33 +27,36 @@ function index () {
             </div>
         )
     }
+
     if (isLoading) return <p>Loading...</p>
 
     return (
         <div>
             <h2>HOME</h2>
-            <table className={styles.table}>
-                <thead>
-                    <tr>
-                        <th className={styles.thead}>Name</th>
-                        <th className={styles.thead}>Price</th>
-                        <th className={styles.thead}>Stock</th>
-                        <th className={styles.thead}>Description</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {products.map((product, index) => {
-                        return (
-                            <tr key={product._id}>
-                                <td className={styles.tbody}>{product.name}</td>
-                                <td className={styles.tbody}>{product.price}</td>
-                                <td className={styles.tbody}>{product.stock}</td>
-                                <td className={styles.tbody}>{product.description}</td>
-                            </tr>
-                        )
-                    })}
-                </tbody>
-            </table>
+            <div className={styles.tableContainer}>
+                <table className={styles.table}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {products.map((product) => {
+                            return (
+                                <tr key={product._id}>
+                                    <td>{product.name}</td>
+                                    <td>{product.price}</td>
+                                    <td>{product.stock}</td>
+                                    <td>{product.description}</td>
+                                </tr>
+                            )
+                        })}
+                    </tbody>
+                </table>
+            </div>
         </div>
     )
 }

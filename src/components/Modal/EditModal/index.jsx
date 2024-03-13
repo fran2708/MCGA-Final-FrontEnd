@@ -11,7 +11,7 @@ function index ({ newProductData, product, setNewProductData }) {
     return (
         <div className={styles.editContainer}>
             <form action="submit">
-                <div className={styles.inpoutContainer}>
+                <div className={styles.inputContainer}>
                     <label htmlFor='name'>New name</label>
                     <input
                         className={styles.editInput}
@@ -23,7 +23,7 @@ function index ({ newProductData, product, setNewProductData }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className={styles.inpoutContainer}>
+                <div className={styles.inputContainer}>
                     <label htmlFor='name'>New price</label>
                     <input
                         className={styles.editInput}
@@ -35,7 +35,7 @@ function index ({ newProductData, product, setNewProductData }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className={styles.inpoutContainer}>
+                <div className={styles.inputContainer}>
                     <label htmlFor='name'>New stock</label>
                     <input
                         className={styles.editInput}
@@ -47,7 +47,7 @@ function index ({ newProductData, product, setNewProductData }) {
                         onChange={handleChange}
                     />
                 </div>
-                <div className={styles.inpoutContainer}>
+                <div className={styles.inputContainer}>
                     <label htmlFor='name'>New description</label>
                     <input
                         className={styles.editInput}

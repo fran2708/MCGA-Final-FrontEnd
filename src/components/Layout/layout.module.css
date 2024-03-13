@@ -1,8 +1,12 @@
-.container{
-    display:flex;
-    flex-direction:column;
+@import '../../styles/globalVariables.css';
+
+.container {
+    display: flex;
+    flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 100vh;
-    background-color: rgb(69, 71, 116);
+    background-color: var(--background-color-grey)
 }
+
+/* background-color: rgb(69, 71, 116); */

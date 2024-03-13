@@ -1,5 +1,7 @@
 import { useNavigate } from 'react-router-dom'
+
 import { PrivateRoutes, PublicRoutes } from '../../models/routes'
+
 import styles from './header.module.css'
 
 function index () {
@@ -12,13 +14,13 @@ function index () {
     // }
 
     return (
-        <header className={styles.container}>
-            <h2>HEADER</h2>
+        <header className={styles.headerContainer}>
+            <h2>MCGA - Final</h2>
             <section className={styles.buttonContainer}>
-                <button onClick={() => navigate(`/${PublicRoutes.HOME}`)}>HOME</button>
-                <button onClick={() => navigate(`/${PrivateRoutes.DASHBOARD}`)}>DASHBOARD</button>
+                <button className={styles.headerButton} onClick={() => navigate(`/${PublicRoutes.HOME}`)}>HOME</button>
+                <button className={styles.headerButton} onClick={() => navigate(`/${PrivateRoutes.DASHBOARD}`)}>DASHBOARD</button>
             </section>
-            <button><a href="https://github.com/fran2708/MCGA-Final-FrontEnd" >Github</a></button>
+            <button><a href="https://github.com/fran2708/MCGA-Final-FrontEnd" target="_blank" rel="noreferrer">Github</a></button>
         </header>
     )
 }

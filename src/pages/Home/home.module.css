@@ -1,0 +1,49 @@
+@import '../../styles/globalVariables.css';
+
+table{
+    border: 1px solid var(--secondary-color-black);
+    width: 50vw;
+    table-layout: auto;
+}
+
+thead th {
+    padding: 8px;
+    background-color:var(--primary-color-blue);
+    width: 20%; 
+    border: 1px solid var(--secondary-color-black);
+    color: var(--white);
+    font-weight: bold;
+  }
+
+td{
+   padding: 8px;
+   border: 1px solid black;
+}
+
+thead .showTableButtons{
+   width: 89%;
+   justify-content: center;
+}
+
+.errorContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: space-between;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background-color:var(--cancel-button-red);
+    color: white;
+    font-weight: bold;
+}
+
+.errorContainer button{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid black;
+    color: white;
+    cursor: pointer;
+}

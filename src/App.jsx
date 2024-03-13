@@ -4,10 +4,11 @@ import Layout from './components/Layout/index'
 import Login from './pages/Login/index'
 import Home from './pages/Home'
 import Dashboard from './pages/Dashboard/index'
+
 import { AuthGuard } from './guards/auth.guard'
 import { PublicRoutes, PrivateRoutes } from './models/routes'
 
-// import './App.css'
+import './App.css'
 
 function App () {
     return (

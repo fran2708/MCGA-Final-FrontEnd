@@ -1,18 +1,28 @@
-.container{
+@import '../../styles/globalVariables.css';
+
+.headerContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    border: 2px solid black;
+    border-bottom: 1px solid var(--primary-color-blue);
     min-height: 7vh;
     min-width: 100vw;
 }
 
-.buttonContainer{
+.buttonContainer {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
     min-width: 33vw;
+}
 
+.headerButton{
+    min-width: 150px;
+}
+
+.headerButton:hover{
+    background-color: var(--primary-color-blue);
+    color: var(--white);
 }
