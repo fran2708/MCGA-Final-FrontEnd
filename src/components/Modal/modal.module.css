@@ -1,0 +1,96 @@
+@import "../../styles/globalVariables.css";
+
+h2 {
+  text-transform: uppercase;
+}
+
+span {
+  margin-top: 20px;
+  font-size: 0.8em;
+}
+
+label {
+  text-transform: capitalize;
+}
+
+input {
+  text-align: center;
+}
+
+.modal {
+  display: none;
+}
+
+.modalOpen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background-color: var(--modal-background-color);
+}
+
+
+.modalContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 55vw;
+  height: 45vw;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: var(--background-color-grey);
+  overflow:auto;
+}
+
+.topRow {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5vh;
+}
+
+.cancelButton:hover{
+  cursor: pointer;
+  border: 1px solid var(--cancel-button-red);
+}
+
+.bottomRow {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.saveButton:hover{
+  cursor: pointer;
+  border: 1px solid var(--confirm-button-green);
+}
+
+.confirmationContainer{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  height: 100%;
+  width: 100%;
+}
+
+.confirmButton:hover{
+  cursor: pointer;
+  border: 1px solid var(--confirm-button-green);
+}
+
+.cancelConfirmButton:hover{
+  cursor: pointer;
+  border: 1px solid var(--cancel-button-red);
+}
+
+.inputContainer {
+  display: flex;
+  flex-direction: column;
+}

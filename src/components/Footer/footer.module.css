@@ -1,0 +1,11 @@
+@import '../../styles/globalVariables.css';
+
+.footerContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    min-width: 100vw;
+    height: 60px;
+    border-top: 1px solid var(--primary-color-blue);
+  }
