@@ -6,7 +6,8 @@
     align-items: center;
     justify-content: space-around;
     border-bottom: 1px solid var(--primary-color-blue);
-    min-height: 7vh;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
     min-width: 100vw;
 }
 

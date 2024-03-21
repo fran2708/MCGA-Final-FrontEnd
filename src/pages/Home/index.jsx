@@ -31,7 +31,7 @@ function index () {
     if (isLoading) return <p>Loading...</p>
 
     return (
-        <div>
+        <div className={styles.container}>
             <h2>HOME</h2>
             <div className={styles.tableContainer}>
                 <table className={styles.table}>

@@ -66,7 +66,7 @@ function index () {
     if (isLoading) return <p>Loading...</p>
 
     return (
-        <div>
+        <div className={styles.container}>
             <button className={styles.dashboardButtons} onClick={dashboardLogOut}>LOGOUT</button>
             <h2>DASHBOARD</h2>
             <div className={styles.tableContainer}>
